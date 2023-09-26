@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Add Bootstrap Toggle CSS -->
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="header-text">
+      <h2 class="text-white">Weather Forecast</h2>
+    </div>
+    <img src="https://img.freepik.com/free-photo/mountain-northern-thailand_53876-147823.jpg?w=740&t=st=1695633453~exp=1695634053~hmac=60e7a7b61d73549717988889fae84f219ad0ce941bf11b2ca974e022b02226f8"
+    alt="Logo" height="50" width="1700">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form (submit)="getWeather()">
+            <div class="input-group mb-3">
+              <input type="text" [(ngModel)]="city" name="city" class="form-control" placeholder="Enter city name"
+                required>
+              <button type="submit" class="btn btn-primary">Get Weather</button>
+              <button type="button" class="btn btn-secondary" (click)="toggleUnits()">
+                Toggle Units ({{ isMetric ? 'Metric' : 'Imperial' }})
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Weather Info -->
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Weather for {{ weatherData.name }}, {{ weatherData.sys.country }}</h2>
+              <img [src]="getIconUrl(weatherData.weather[0].icon)" class="weather-icon mb-3">
+
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <p class="card-text">Description: {{ weatherData.weather[0].description }}</p>
+                </div>
+                <div class="col-md-6">
+                  <p class="card-text">Temperature:
+                    {{ isMetric ? weatherData.main.temp : convertToFahrenheit(weatherData.main.temp) }}{{
+                      isMetric ? '°C' : '°F' }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="card-text">Humidity: {{ weatherData.main.humidity }}%</p>
+                </div>
+                <div class="col-md-6">
+                  <p class="card-text">Wind Speed:
+                    {{ isMetric ? weatherData.wind.speed : convertToMph(weatherData.wind.speed) }}{{
+                      isMetric ? ' m/s' : ' mph' }}
+                  </p>
+                </div>
+              </div>
+
+              <button class="btn btn-primary mt-3" (click)="saveCity()">♥</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Favorite Cities List -->
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Favorite Cities</h2>
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let city of favoriteCitiesService.getFavoriteCities(); let i = index">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <strong>{{ city.name }}</strong><br>
+                      {{ city.temperature }}{{ isMetric ? '°C' : '°F' }}
+                    </div>
+                    <div>
+                      <img [src]="getIconUrl(city.icon)" alt="Weather Icon" class="favorite-city-icon">
+                      <button class="btn btn-danger btn-sm ml-2"
+                        (click)="favoriteCitiesService.removeFavoriteCity(i)">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Chart Container -->
+      <div class="chart-container">
+        <canvas id="hourlyForecastChart"></canvas>
+      </div>
+
+      <!-- Add Bootstrap Toggle Script -->
+      <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+      <!-- Add Toggle Script -->
+      <script>
+        $(function () {
+          $('#toggle-event').change(function () {
+            $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+          })
+        })
+      </script>
+
+      <!-- Add Bootstrap JS Scripts -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

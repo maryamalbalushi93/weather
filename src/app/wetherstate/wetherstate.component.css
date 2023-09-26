@@ -1,0 +1,129 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .header {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .header img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .header-text {
+    margin-bottom: 20px;
+  }
+
+  .container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-control,
+  .btn {
+    border-radius: 20px;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .weather-icon {
+    max-width: 100px;
+    height: auto;
+  }
+
+  .favorite-city-icon {
+    max-width: 50px;
+    height: auto;
+  }
+
+  .chart-container {
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .weather-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .weather-card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .weather-card p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .weather-card .weather-icon {
+    max-width: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .weather-card .temperature {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .weather-card .toggle-unit-btn {
+    margin-top: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-danger:hover {
+    background-color: #bd2130;
+    border-color: #bd2130;
+  }
+  .favorite-button {
+    font-size: 2em; /* Adjust the font size to make the heart bigger */
+    background-color: transparent; /* Make the background transparent */
+    border: 2px solid #007bff; /* Add a 2px border with a blue color */
+    color: #007bff; /* Set the heart color to blue */
+    border-radius: 50%; /* Make the button round */
+    padding: 10px 20px; /* Add some padding for better visual */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  }
+  
+  .favorite-button:hover {
+    background-color: #007bff; /* Change the background color on hover */
+    color: #fff; /* Change the text color on hover */
+  }
